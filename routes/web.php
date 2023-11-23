@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -12,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-/*
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('table');
 });
 
 // parameter sederhana 
@@ -64,14 +66,75 @@ Route::get('/data', function () {
 
     return view('data', compact('data'));
 });
-*/
+
 // Diatas adalah contoh asessment teori
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
 //Route::get('/', 'HomeController@index');
 
-//membuat form register
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
+// //membuat form register
+// Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+// Route::post('/register', [RegisterController::class, 'register']);
+
+//Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa');
+//Route::get('/dosen', [DosenController::class, 'index'])->name('dosen');
+
+// routes/web.php
+
+
+// Route::get('/mahasiswa', function () {
+//     $arrMahasiswa = ["Risa Lestari", "Rudi Hermawan", "Bambang Kusumo", "Lisa Permata"];
+//     return response()->json(['mahasiswa' => $arrMahasiswa]);
+// })->name('mahasiswa');
+
+// Route::get('/dosen', function () {
+//     $arrDosen = ["Maya Fitrianti, M.M.", "Prof. Silvia Nst, M.Farm.", "Dr. Umar Agustinus", "Dr. Syahrial, M.Kom."];
+//     return response()->json(['dosen' => $arrDosen]);
+// })->name('dosen');
+
+// Route::get('/exercise', function () {
+//     $matkul00 = new \stdClass();
+//     $matkul00->namaMatkul = "Sistem Operasi";
+//     $matkul00->jumlahSks = 3;
+//     $matkul00->semester = 3;
+
+//     $matkul01 = new \stdClass();
+//     $matkul01->namaMatkul = "Algoritma dan Pemrograman";
+//     $matkul01->jumlahSks = 4;
+//     $matkul01->semester = 1;
+
+//     $matkul02 = new \stdClass();
+//     $matkul02->namaMatkul = "Kalkulus Dasar";
+//     $matkul02->jumlahSks = 2;
+//     $matkul02->semester = 1;
+
+//     $matkul03 = new \stdClass();
+//     $matkul03->namaMatkul = "Basis Data";
+//     $matkul03->jumlahSks = 2;
+//     $matkul03->semester = 3;
+
+//     $matkuls = collect([$matkul00, $matkul01, $matkul02, $matkul03]);
+
+//     // 1. Tampilkan semua mata kuliah di semester 3
+//     $matkulsSemester3 = $matkuls->where('semester', 3)->pluck('namaMatkul')->implode(', ');
+//     echo "Nama mata kuliah di semester 3: $matkulsSemester3\n";
+
+//     // 2. Urutkan mata kuliah berdasarkan jumlah sks
+//     $sortedMatkuls = $matkuls->sortByDesc('jumlahSks');
+
+//     // Tampilkan sebagai string
+//     $matkulsString = $sortedMatkuls->map(function ($matkul) {
+//         return "$matkul->namaMatkul ($matkul->jumlahSks)";
+//     })->implode(', ');
+
+//     echo "Nama mata kuliah: $matkulsString\n";
+// });
+
+// use App\Http\Controllers\DosenController;
+
+// Route::resource('dosens', DosenController::class);
+
+Route::get('/form', 'FormController@showForm');
+Route::post('/form', 'FormController@processForm');
