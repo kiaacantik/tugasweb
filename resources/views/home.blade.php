@@ -211,5 +211,13 @@
     <p class="mb-1">Jln. Pajagalan No. 16, Waluya, RT. 02 RW. 04, Kecamatan Cicalengka, Kabupaten Bandung 40395</p>
     <p class="mb-0">Testimoni <a href="/">Visit the homepage</a> or read our <a href="/docs/5.1/getting-started/introduction/">getting started guide</a>.</p>
   </div>
+
+  <h1>Upload File</h1>
+
+    <form action="{{ route('upload') }}" method="post" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="file" />
+        <button type="submit">Upload</button>
+    </form>
 </footer>
 @endsection

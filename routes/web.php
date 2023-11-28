@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\FileController;
 
 
 /*
@@ -16,8 +17,11 @@ use App\Http\Controllers\Controller;
 */
 
 Route::get('/', function () {
-    return view('table');
+    return view('home');
 });
+
+Route::get('/upload', [FileController::class, 'showForm']);
+Route::post('/upload', [FileController::class, 'upload'])->name('upload');
 
 // parameter sederhana 
 Route::get('/Home', function () {
@@ -135,6 +139,5 @@ Route::get('/data', function () {
 // use App\Http\Controllers\DosenController;
 
 // Route::resource('dosens', DosenController::class);
-
 Route::get('/form', 'FormController@showForm');
 Route::post('/form', 'FormController@processForm');
